@@ -78,14 +78,13 @@ describe('controller', function () {
 
 	it('should show entries on start-up', function () {
 		// TODO: write test
-		// Array of todo items
 		var todo = [
 			{id: 32, title: 'Todo one', complete: false},
 			{id: 33, title: 'Todo two', complete: true}
 		];
-		// Setup database with new array
+		
 		setUpModel([todo]);
-		// Set view to show all todos on load
+		
 		subject.setView('');
 
 
