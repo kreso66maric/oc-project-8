@@ -79,7 +79,7 @@
 		var todos = data.todos;
 		var newId;
 		callback = callback || function () {};
-
+		// ================ EDIT ===============//
 		// Generate an ID
 		// var testId = '_' + Math.random().toString(36).substr(2, 9);
 	    // var newId = ""; 
@@ -118,7 +118,11 @@
 		} else {
 
 			// Assign an ID
-			newId = new Date().getTime() + Math.floor(Math.random()*1000);
+
+			// Gives a 19 character alphanumeric string
+			// Example ID: 'k5hz4rbkf1gloupj2t5'
+			newId = new Date().valueOf().toString(36) + Math.random().toString(36).substr(2);
+			
 			updateData.id = parseInt(newId);
 			console.log(newId);
     
@@ -127,7 +131,7 @@
 			callback.call(this, [updateData]);
 		}
 	};
-
+	// =========================== EDIT ===============================//
 	/**
 	 * Will remove an item from the Store based on its ID
 	 *
