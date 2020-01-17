@@ -10,4 +10,6 @@
 - Open `index.html`
 
 
+Technical documentation: [wiki](https://github.com/kreso66maric/oc-project-8/wiki)
+
 
