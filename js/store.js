@@ -77,30 +77,16 @@
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
-		var newId;
+
 		callback = callback || function () {};
-		// ================ EDIT ===============//
+
 		// Generate an ID
-		// var testId = '_' + Math.random().toString(36).substr(2, 9);
-	    // var newId = ""; 
-		// var charset = "0123456789";
-		
+	    var newId = ""; 
+	    var charset = "0123456789";
 
-        // for (var i = 0; i < 6; i++) {
-		// 	 newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		// 	 console.log(newId);
-		// }
-
-		// var checkIdForMatch = todos.find(function(item) {
-		// 	return item.id === newId;
-		// });
-
-		// while (checkIdForMatch) {
-		// 	for (var i = 0; i < 6; i++) {
-		// 		newId += charset.charAt(Math.floor(Math.random() * charset.length))
-		// 		console.log(newId);
-		// 	}
-		// }
+        for (var i = 0; i < 6; i++) {
+     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
+		}
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {
@@ -117,21 +103,16 @@
 			callback.call(this, todos);
 		} else {
 
-			// Assign an ID
-
-			// Gives a 19 character alphanumeric string
-			// Example ID: 'k5hz4rbkf1gloupj2t5'
-			newId = new Date().valueOf().toString(36) + Math.random().toString(36).substr(2);
-			
+    		// Assign an ID
 			updateData.id = parseInt(newId);
-			console.log(newId);
     
+
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
 		}
 	};
-	// =========================== EDIT ===============================//
+
 	/**
 	 * Will remove an item from the Store based on its ID
 	 *

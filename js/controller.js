@@ -8,7 +8,6 @@
 	 * @param {object} model The model instance
 	 * @param {object} view The view instance
 	 */
-	
 	function Controller(model, view) {
 		var self = this;
 		self.model = model;
@@ -156,24 +155,19 @@
 	 * @param {number} id The ID of the item to remove from the DOM and
 	 * storage
 	 */
-	//================= EDIT ===================//
-	// 
-	// Removes item with matching ID from DOM and local storage
 	Controller.prototype.removeItem = function (id) {
 		var self = this;
+		var items;
+		self.model.read(function(data) {
+			items = data;
+		});
 
-		// Comented out console.log //
-		// var items;
-		// self.model.read(function(data) {
-		// 	items = data;
-		// });
+		items.forEach(function(item) {
+			if (item.id === id) {
+				console.log("Element with ID: " + id + " has been removed.");
+			}
+		});
 
-		// items.forEach(function(item) {
-		// 	if (item.id === id) {
-		// 		console.log("Element with ID: " + id + " has been removed.");
-		// 	}
-		// });
-		//================ EDIT ==================//
 		self.model.remove(id, function () {
 			self.view.render('removeItem', id);
 		});
