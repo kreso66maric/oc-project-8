@@ -24,11 +24,11 @@
 
 			<header class="header">
 				<h1>todos</h1>
-				<input class="new-todo" placeholder="What needs to be done?" autofocus>
+				<input class="new-todo" placeholder="What needs to be done?" aria-label="new todo input" autofocus>
 			</header>
 
 			<section class="main">
-				<input class="toggle-all" id="toggle-all" type="checkbox">
+				<input class="toggle-all" id="toggle-all" aria-label="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
 				<ul class="todo-list"></ul>
 			</section>
@@ -49,6 +49,17 @@
 				<button class="clear-completed">Clear completed</button>
 			</footer>
 
+		</section>
+
+		<section class="features">
+			<div class="features-container">
+				<h3>Quick Guide</h3>
+				<ul>
+					<li>Double click on todo to edit.</li>
+					<li>Mark todo as complete by clicking on the circle beside it.</li>
+					<li>Filter todos with buttons "All" "Active" and "Completed"</li>
+				</ul>
+			</div>
 		</section>
 
 		<footer class="info">
