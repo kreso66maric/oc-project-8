@@ -71,7 +71,7 @@ describe('controller', function () {
 		setUpModel(todo);
 
 		subject.setView('');
-
+		// Expect view to call showEntries for todo array
 		expect(view.render).toHaveBeenCalledWith('showEntries', todo);
 	});
 	// =================
@@ -105,10 +105,11 @@ describe('controller', function () {
 			];
 
 			setUpModel(todo);
-
+			// Show active todos on load
 			subject.setView('#/active');
-
+			// Expect view to call showEntries on todo
 			expect(view.render).toHaveBeenCalledWith('showEntries', todo);
+			// Expect view to have setFilter to active
 			expect(view.render).toHaveBeenCalledWith('setFilter', 'active');
 			// Expect to read only active todos
 			expect(model.read).toHaveBeenCalledWith({ completed: false },jasmine.any(Function));
@@ -122,10 +123,11 @@ describe('controller', function () {
 			];
 
 			setUpModel(todo);
-
+			// Show completed todos on load
 			subject.setView('#/completed');
-
+			// Expect view to show all completed todos
 			expect(view.render).toHaveBeenCalledWith('showEntries', todo);
+			// Expect setFilter to set on ompleted
 			expect(view.render).toHaveBeenCalledWith('setFilter', 'completed');
 			// Expect to read only completed todos
 			expect(model.read).toHaveBeenCalledWith({completed: true}, jasmine.any(Function));
@@ -184,9 +186,9 @@ describe('controller', function () {
 		];
 
 		setUpModel(todo);
-
+		// Show all todos on load
 		subject.setView('');
-
+		// Expect view to show all todos on load
 		expect(view.render).toHaveBeenCalledWith('setFilter', '');
 	});
 
@@ -198,9 +200,9 @@ describe('controller', function () {
 		];
 
 		setUpModel(todo);
-
+		// Show all active todos on load
 		subject.setView('#/active');
-
+		// Expect view to render display to active
 		expect(view.render).toHaveBeenCalledWith('setFilter', 'active');
 	});
 
@@ -211,9 +213,9 @@ describe('controller', function () {
 		];
 
 		setUpModel(todo);
-
+		// Show all completed todos on load
 		subject.setView('#/completed');
-
+		// Expect view to render display to completed
 		expect(view.render).toHaveBeenCalledWith('setFilter', 'completed');
 	});
 	// ===================
@@ -230,7 +232,9 @@ describe('controller', function () {
 				{id: 44, title: 'Todo three', completed: false}
 			];
 			setUpModel(todo);
+			
 			subject.setView('');
+			// Set toggleAll button to true
 			view.trigger('toggleAll', {completed: true});
 		})
 		it('should toggle all todos to completed', function () {
@@ -267,9 +271,9 @@ describe('controller', function () {
 			setUpModel(todo);
 
 			subject.setView('');
-
+			// Create new todo item
 			view.trigger('newTodo', 'New todo')
-
+			// Expect new tofo to have been created
 			expect(model.create).toHaveBeenCalledWith('New todo', jasmine.any(Function));
 		});
 	// =================	
@@ -322,9 +326,9 @@ describe('controller', function () {
 			setUpModel(todo);
 
 			subject.setView('');
-
+			// Trigger itemRemove on item with id: 42
 			view.trigger('itemRemove', {id: 42});
-
+			// Expect model to remove item with id: 42
 			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function))
 		});
 		// =================

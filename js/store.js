@@ -77,16 +77,17 @@
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
+		var newId;
 
 		callback = callback || function () {};
 
 		// Generate an ID
-	    var newId = ""; 
-	    var charset = "0123456789";
+	    // var newId = ""; 
+	    // var charset = "0123456789";
 
-        for (var i = 0; i < 6; i++) {
-     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		}
+        // for (var i = 0; i < 6; i++) {
+     	// 	newId += charset.charAt(Math.floor(Math.random() * charset.length));
+		// }
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {
@@ -102,9 +103,10 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
-
-    		// Assign an ID
+			// Assign an ID
+			newId = new Date().getTime();
 			updateData.id = parseInt(newId);
+			console.log(newId);
     
 
 			todos.push(updateData);
