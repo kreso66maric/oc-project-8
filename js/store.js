@@ -106,7 +106,7 @@
 			// Assign an ID
 			newId = new Date().getTime();
 			updateData.id = parseInt(newId);
-			console.log(newId);
+			// console.log(newId);
     
 
 			todos.push(updateData);
@@ -124,16 +124,17 @@
 	Store.prototype.remove = function (id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
-		var todoId;
+		// var todoId; //
 		
-		for (var i = 0; i < todos.length; i++) {
-			if (todos[i].id == id) {
-				todoId = todos[i].id;
-			}
-		}
+		// Todo item can be removed only with one for loop
+		// for (var i = 0; i < todos.length; i++) {
+		// 	if (todos[i].id == id) {
+		// 		todoId = todos[i].id;
+		// 	}
+		// }
 
 		for (var i = 0; i < todos.length; i++) {
-			if (todos[i].id == todoId) {
+			if (todos[i].id == id) {
 				todos.splice(i, 1);
 			}
 		}
