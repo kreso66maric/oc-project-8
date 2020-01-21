@@ -9,6 +9,9 @@
 - `npm install`
 - Open `index.html`
 
+### Live Site
+[To do list](https://todo-list-oc.netlify.com/)
+
 
 Technical documentation: [wiki](https://github.com/kreso66maric/oc-project-8/wiki)
 
