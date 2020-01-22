@@ -53,7 +53,12 @@ describe('controller', function () {
 	};
 
 	beforeEach(function () {
-		model = jasmine.createSpyObj('model', ['read', 'getCount', 'remove', 'create', 'update']);
+		model = jasmine.createSpyObj('model',
+		 ['read', 
+		 'getCount', 
+		 'remove', 
+		 'create', 
+		 'update']);
 		view = createViewStub();
 		subject = new app.Controller(model, view);
 	});
